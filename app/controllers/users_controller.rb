@@ -7,7 +7,9 @@ class UsersController < ApplicationController
       @user = User.new
     end
   
-
+    def show
+    
+    end 
   
     # POST /users
     # POST /users.json
@@ -16,9 +18,9 @@ class UsersController < ApplicationController
   
       respond_to do |format|
         if @user.save
-          cookies.signed[:user_id] = @user.id
+        #   cookies.signed[:user_id] = @user.id
           format.html { redirect_to @user, notice: 'User was successfully created.' }
-          format.json { render :show, status: :created, location: @user }
+        #   format.json { render :show, status: :created, location: @user }
         else
           format.html { render :new }
           format.json { render json: @user.errors, status: :unprocessable_entity }
