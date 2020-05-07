@@ -2,6 +2,9 @@ class UsersController < ApplicationController
     def index 
       @users= User.all
     end 
+
+    def show
+    end 
   
   
     # GET /users/new
@@ -17,12 +20,11 @@ class UsersController < ApplicationController
     # POST /users.json
     def create
       @user = User.new(user_params)
-  
       respond_to do |format|
         if @user.save
         #   cookies.signed[:user_id] = @user.id
           format.html { redirect_to @user, notice: 'User was successfully created.' }
-        #   format.json { render :show, status: :created, location: @user }
+          format.json { render :show, status: :created, location: @user }
         else
           format.html { render :new }
           format.json { render json: @user.errors, status: :unprocessable_entity }
